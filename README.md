@@ -64,6 +64,12 @@ attach_json = [
 When the message is posted, Slack’s Web API will return some data about the message (see `res` below) such as the channel, timestamp and message content. We’re going to store the channel and timestamp to the map under the task ID.
 
 ```
+from slackclient import SlackClient
+import os
+
+slack_token = os.environ["SLACK_API_TOKEN"]
+slack = SlackClient(slack_token)
+
 # Post the message to Slack, storing the result as `res`
 res = slack.api_call(
     "chat.postMessage",
